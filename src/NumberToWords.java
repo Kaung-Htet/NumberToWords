@@ -108,6 +108,10 @@ public class NumberToWords {
 //        System.out.println(revNum);
         return revNum;
     }
+
+    public static int getDigitCount (int number){
+
+    }
 }
 
 //Write a method called numberToWords with one int parameter named number.

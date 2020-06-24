@@ -5,6 +5,10 @@ public class NumberToWords {
             return;
         }
 
+        //reverse number
+        number = reverse(number);
+        //System.out.println(number);
+
         int toIterate = 0;
         while (number != 0) {
 
@@ -80,6 +84,29 @@ public class NumberToWords {
 
             number = toIterate;
         }
+    }
+
+    public static int reverse(int number) {
+        //assume reverse number as revNum
+        //revNum ကို integer data type ထားရင် ဂဏန်းကြီးလာတဲ့အခါ error ဖြစ်တယ်
+//        long revNum = 0;
+        int revNum = 0;
+        while (number != 0) {
+            revNum += (number % 10);
+//          for test only
+//            System.out.println(revNum);
+            //move digit one more place for each time
+            revNum *= 10; //30,320,3210
+
+            //remove last digit
+            number /= 10;
+
+        }
+
+        revNum /= 10;
+        //for test only
+//        System.out.println(revNum);
+        return revNum;
     }
 }
 

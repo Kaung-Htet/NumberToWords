@@ -5,12 +5,17 @@ public class NumberToWords {
             return;
         }
 
+        //get original digit count
+        int orDigitCount = getDigitCount(number);
+
+        //get reversed digit count
+        int revDigitCount = getDigitCount(reverse(number));
+
         //reverse number
         int reversedNum = reverse(number);
         
         int toIterate = 0;
-        while (reversedNum != 0) {
-
+            for (int i = 1; i <= revDigitCount; i++){
             toIterate = reversedNum /10;
 
             //find last digit
@@ -83,12 +88,6 @@ public class NumberToWords {
 
             reversedNum = toIterate;
         }
-
-        //get original digit count
-        int orDigitCount = getDigitCount(number);
-
-        //get reversed digit count
-        int revDigitCount = getDigitCount(reverse(number));
 
         //ဂဏန်းရဲ့ရှေ့မှာရှိတဲ့ သုညတွေကိုထည့်ရန်အတွက် if statement ဖြစ်တယ်
         if (revDigitCount < orDigitCount) {

@@ -6,41 +6,40 @@ public class NumberToWords {
         }
 
         //reverse number
-        number = reverse(number);
-        //System.out.println(number);
-
+        int reversedNum = reverse(number);
+        
         int toIterate = 0;
-        while (number != 0) {
+        while (reversedNum != 0) {
 
-            toIterate = number /10;
+            toIterate = reversedNum /10;
 
             //find last digit
-            number %= 10;
+            reversedNum %= 10;
 
-//            if(number == 0){
+//            if(reversedNum == 0){
 //                System.out.println("Zero");
-//            } else if(number == 1){
+//            } else if(reversedNum == 1){
 //                System.out.println("One");
-//            } else if(number == 2){
+//            } else if(reversedNum == 2){
 //                System.out.println("Two");
-//            } else if(number == 3){
+//            } else if(reversedNum == 3){
 //                System.out.println("Three");
-//            } else if(number == 4){
+//            } else if(reversedNum == 4){
 //                System.out.println("Four");
-//            } else if(number == 5){
+//            } else if(reversedNum == 5){
 //                System.out.println("Five");
-//            } else if(number == 6){
+//            } else if(reversedNum == 6){
 //                System.out.println("Six");
-//            } else if(number == 7){
+//            } else if(reversedNum == 7){
 //                System.out.println("Seven");
-//            } else if(number == 8){
+//            } else if(reversedNum == 8){
 //                System.out.println("Eight");
-//            } else if(number == 9){
+//            } else if(reversedNum == 9){
 //                System.out.println("Nine");
 //            }
 
             // if, else if statement ရော အောက်က switch statement ရောနှစ်မျိုးလုံးသုံးလို့ရတယ်
-            switch (number){
+            switch (reversedNum){
                 case 0:
                     System.out.println("Zero");
                     break;
@@ -82,7 +81,20 @@ public class NumberToWords {
                     break;
             }
 
-            number = toIterate;
+            reversedNum = toIterate;
+        }
+
+        //get original digit count
+        int orDigitCount = getDigitCount(number);
+
+        //get reversed digit count
+        int revDigitCount = getDigitCount(reverse(number));
+
+        //ဂဏန်းရဲ့ရှေ့မှာရှိတဲ့ သုညတွေကိုထည့်ရန်အတွက် if statement ဖြစ်တယ်
+        if (revDigitCount < orDigitCount) {
+            for (int i = revDigitCount; i < orDigitCount; i++) {
+                System.out.println("Zero");
+            }
         }
     }
 
@@ -93,8 +105,6 @@ public class NumberToWords {
         int revNum = 0;
         while (number != 0) {
             revNum += (number % 10);
-//          for test only
-//            System.out.println(revNum);
             //move digit one more place for each time
             revNum *= 10; //30,320,3210
 
@@ -104,13 +114,25 @@ public class NumberToWords {
         }
 
         revNum /= 10;
-        //for test only
-//        System.out.println(revNum);
         return revNum;
     }
 
-    public static int getDigitCount (int number){
+    public static int getDigitCount(int number) {
+        if (number < 0){
+            return -1;
+        }
 
+        int count = 0;
+        do {
+            count++;
+            number /= 10;
+        } while(number != 0);
+
+//        while (number  0) {
+//            count++;
+//            number /= 10;
+//        }
+        return count;
     }
 }
 
